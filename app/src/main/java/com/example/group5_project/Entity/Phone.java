@@ -3,16 +3,16 @@ package com.example.group5_project.Entity;
 import java.util.ArrayList;
 
 public class Phone {
-    private long id, price;
-    private String description, name, category;
+    private long id, price , categoryId;
+    private String description, name;
     private String image;
 
-    public Phone(long id, long price, String description, String name, String category, String image) {
+    public Phone(long id, long price, String description, String name, long categoryId, String image) {
         this.id = id;
         this.price = price;
         this.description = description;
         this.name = name;
-        this.category = category;
+        this.categoryId = categoryId;
         this.image = image;
     }
 
@@ -56,12 +56,12 @@ public class Phone {
         this.name = name;
     }
 
-    public String getCategory() {
-        return category;
+    public long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(long category) {
+        this.categoryId = category;
     }
 
 
