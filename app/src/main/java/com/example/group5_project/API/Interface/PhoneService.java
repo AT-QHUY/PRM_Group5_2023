@@ -11,12 +11,12 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface PhoneService {
-    String PHONES = "phones";
+    String PHONES = "Phone";
     @GET(PHONES)
     Call<Phone[]> getAllPhones();
 
     @GET(PHONES + "/{id}")
-    Call<Phone> getPhone(@Path("id") Object id);
+    Call<Phone> getPhone(@Path("id") long id);
 
     @GET(PHONES + "/{keyword}")
     Call<Phone> searchPhone(@Path("keyword") String keyword);
@@ -28,9 +28,8 @@ public interface PhoneService {
     @POST(PHONES)
     Call<Phone> createPhone(@Body Phone phone);
 
-    @PUT(PHONES)
-    Call<Phone> updatePhone(@Path("id") Object id, @Body Phone phone);
-
+    @PUT(PHONES + "/{id}")
+    Call<Phone> updatePhone(@Path("id") long id, @Body Phone phone);
     @DELETE(PHONES + "/{id}")
     Call<Phone> deletePhone(@Path("id") Object id);
 }

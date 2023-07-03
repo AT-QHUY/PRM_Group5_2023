@@ -1,7 +1,5 @@
 package com.example.group5_project.Entity;
 
-import java.util.ArrayList;
-
 public class Phone {
     private long id, price , categoryId;
     private String description, name;
@@ -9,6 +7,14 @@ public class Phone {
 
     public Phone(long id, long price, String description, String name, long categoryId, String image) {
         this.id = id;
+        this.price = price;
+        this.description = description;
+        this.name = name;
+        this.categoryId = categoryId;
+        this.image = image;
+    }
+
+    public Phone(String name, String description, long price, long categoryId, String image) {
         this.price = price;
         this.description = description;
         this.name = name;
