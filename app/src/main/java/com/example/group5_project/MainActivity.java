@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -84,9 +85,19 @@ public class MainActivity extends AppCompatActivity {
         dialogDelete.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                phoneService.deletePhone(id);
-                Toast.makeText(MainActivity.this,"Đã xóa "+name,Toast.LENGTH_SHORT).show();
-                GetData();
+                phoneService.deletePhone(id).enqueue(new Callback<Phone>() {
+                    @Override
+                    public void onResponse(Call<Phone> call, Response<Phone> response) {
+                        if(response.body() != null) {
+                            Toast.makeText(MainActivity.this,"Đã xóa "+ name,Toast.LENGTH_SHORT).show();
+                            GetData();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<Phone> call, Throwable t) {
+                        Log.d("Error", t.getMessage());
+                    }
+                });
             }
         });
         dialogDelete.setNegativeButton("Không", new DialogInterface.OnClickListener() {
