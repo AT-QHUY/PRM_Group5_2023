@@ -10,7 +10,7 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface OrderDetailService {
-    String ORDERDETAILS = "orderDetails";
+    String ORDERDETAILS = "orderDetail";
     @GET(ORDERDETAILS)
     Call<OrderDetail[]> getAllOrderDetails();
 

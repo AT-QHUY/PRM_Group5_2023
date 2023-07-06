@@ -25,5 +25,4 @@ public interface OrderService {
 
     @DELETE(ORDERS + "/{id}")
     Call<Order> deleteOrder(@Path("id") Object id);
-    //thuong khi khong ai delete, update order bao h
 }

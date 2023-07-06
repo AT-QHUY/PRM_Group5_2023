@@ -1,4 +1,4 @@
-package com.example.group5_project;
+package com.example.group5_project.Activity.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Entity.Phone;
+import com.example.group5_project.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,10 +43,10 @@ public class OpenAddPage extends AppCompatActivity implements View.OnClickListen
         String name = etName.getText().toString();
         String description = etDescription.getText().toString();
         String price = etPrice.getText().toString();
-        String category = etCategory.getText().toString();
+        String categoryId = etCategory.getText().toString();
         String image = etImage.getText().toString();
 
-        Phone phone = new Phone(name, description, Long.parseLong(price), Long.parseLong(category), image);
+        Phone phone = new Phone(name, description, image, Long.parseLong(price), Long.parseLong(categoryId));
         try{
             Call<Phone> call = phoneService.createPhone(phone);
             call.enqueue(new Callback<Phone>() {

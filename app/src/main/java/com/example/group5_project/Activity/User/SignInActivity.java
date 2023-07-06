@@ -1,4 +1,4 @@
-package com.example.group5_project;
+package com.example.group5_project.Activity.User;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.group5_project.API.Repository.PhoneRepository;
+import com.example.group5_project.R;
 
 public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
 
