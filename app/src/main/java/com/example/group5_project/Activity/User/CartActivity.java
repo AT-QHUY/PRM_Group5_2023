@@ -1,9 +1,8 @@
-package com.example.group5_project;
+package com.example.group5_project.Activity.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
@@ -13,11 +12,12 @@ import android.widget.TextView;
 import com.example.group5_project.Adapter.CartAdapter;
 import com.example.group5_project.Entity.CartDetail;
 import com.example.group5_project.Entity.Phone;
+import com.example.group5_project.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class CartActivity extends AppCompatActivity {
     Button back, checkout;
     TextView totalPrice;
 
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private void CartView(){
         lvCart = (ListView) findViewById(R.id.cartList);
         cartDetails_list =new ArrayList<>();
-        Phone phone = new Phone(1, 1, "ashdaskdaskdlk", "Samsung", "iOS", "");
+        Phone phone = new Phone(1, 1, 1, "Samsung", "iOS", "");
         cartDetails_list.add(new CartDetail(1,1, 2, phone));
         cartDetails_list.add(new CartDetail(2,1, 2, phone));
         cartDetails_list.add(new CartDetail(3,1, 2, phone));
