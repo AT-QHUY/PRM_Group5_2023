@@ -36,7 +36,7 @@ public class AdminOrderListActivity extends AppCompatActivity {
         tvStatus = (TextView) findViewById(R.id.tvStatus);
 
         order_list = new ArrayList<>();
-        User user = new User(1, "name", "address", "role");
+        User user = new User(1, "name", "address", "password","role");
 
         order_list.add(new Order(1, new ArrayList<>(), new Date(), user, 100, "yes sir" ));
         order_list.add(new Order(2, new ArrayList<>(), new Date(), user, 100, "pending" ));
