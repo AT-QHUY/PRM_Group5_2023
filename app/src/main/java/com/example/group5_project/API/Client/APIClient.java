@@ -4,7 +4,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
-    private static String baseURL = "https://6494eed2b08e17c917917daa.mockapi.io/";
+    private static String baseURL = "http://prmhosting-001-site1.atempurl.com/api/";
     private static Retrofit retrofit;
 
     public static Retrofit getClient(){

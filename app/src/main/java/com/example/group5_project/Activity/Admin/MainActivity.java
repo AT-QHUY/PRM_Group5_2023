@@ -1,13 +1,11 @@
-package com.example.group5_project;
+package com.example.group5_project.Activity.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,8 +18,6 @@ import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Adapter.PhoneAdapter;
 import com.example.group5_project.Entity.Phone;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,10 +25,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.example.group5_project.R;
+
 public class MainActivity extends AppCompatActivity {
     PhoneService phoneService;
     ListView PhoneListView;
-    List<Phone> phones;
     PhoneAdapter phoneAdapter;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void GetData(){
         Call<Phone[]> call = phoneService.getAllPhones();
-        phoneService.getAllPhones().enqueue(new Callback<Phone[]>() {
+        call.enqueue(new Callback<Phone[]>() {
             @Override
             public void onResponse(Call<Phone[]> call, Response<Phone[]> response) {
                 if (response.isSuccessful() && (response.body() != null)) {
@@ -62,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-
             @Override
             public void onFailure(Call<Phone[]> call, Throwable t) {
 
             }
+
         });
     }
         @Override

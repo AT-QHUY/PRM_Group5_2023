@@ -9,16 +9,13 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group5_project.Activity.Admin.MainActivity;
 import com.example.group5_project.Entity.Phone;
-import com.example.group5_project.MainActivity;
-import com.example.group5_project.OpenAddPage;
-import com.example.group5_project.OpenEditPage;
+import com.example.group5_project.Activity.Admin.OpenEditPage;
 import com.example.group5_project.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import retrofit2.Callback;
 
 public class PhoneAdapter extends BaseAdapter {
     private MainActivity context;

@@ -12,7 +12,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Thêm điện thoại"
+        android:text="Add Phone"
         android:textColor="#F44336"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -95,7 +95,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Price"
-            android:inputType="text" />
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -121,7 +121,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Category"
-            android:inputType="text" />
+            android:inputType="number" />
     </LinearLayout>
 
     <LinearLayout
@@ -157,7 +157,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="48dp"
         android:background="#6200ED"
-        android:text="Thêm"
+        android:text="Add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageLinearLayout" />
 
@@ -165,13 +165,12 @@
         android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="32dp"
         android:background="#6200ED"
-        android:text="Hủy"
+        android:text="Cancel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toEndOf="@+id/addButton"
         app:layout_constraintTop_toBottomOf="@+id/imageLinearLayout" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,10 @@
-package com.example.group5_project;
+package com.example.group5_project.Activity.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Entity.Phone;
-
-import org.w3c.dom.Text;
+import com.example.group5_project.R;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,7 +93,7 @@ public class OpenEditPage extends AppCompatActivity implements View.OnClickListe
             String newImage = imageText.getText().toString();
 
             // Create a new Phone object with the updated values
-            Phone updatedPhone = new Phone(id, newPrice, newDescription, newName,  newCategoryId, newImage);
+            Phone updatedPhone = new Phone(id, newPrice,  newCategoryId,newDescription, newName  , newImage);
 
             // Call the API service to update the phone data
             phoneService.updatePhone(phoneId, updatedPhone).enqueue(new Callback<Phone>() {
