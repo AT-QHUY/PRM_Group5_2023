@@ -1,8 +1,6 @@
-package com.example.group5_project.API.Service;
+package com.example.group5_project.API.Interface;
 
-import com.example.group5_project.Entity.Order;
 import com.example.group5_project.Entity.OrderDetail;
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -12,17 +10,20 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface OrderDetailService {
-    String ORDER_DETAIL = "order_detail";
+    String ORDERDETAILS = "orderDetail";
+    @GET(ORDERDETAILS)
+    Call<OrderDetail[]> getAllOrderDetails();
 
-    @GET(ORDER_DETAIL + "/{id}")
-    Call<OrderDetail[]> getAllOrderDetailByOrderId(@Path("id") Object id);
+    @GET(ORDERDETAILS + "/{id}")
+    Call<OrderDetail> getOrderDetail(@Path("id") Object id);
 
-    @POST(ORDER_DETAIL)
+    @POST(ORDERDETAILS)
     Call<OrderDetail> createOrderDetail(@Body OrderDetail orderDetail);
 
-    @PUT(ORDER_DETAIL + "/{id}")
+    @PUT(ORDERDETAILS)
     Call<OrderDetail> updateOrderDetail(@Path("id") Object id, @Body OrderDetail orderDetail);
 
-    @DELETE(ORDER_DETAIL + "/{id}")
+    @DELETE(ORDERDETAILS + "/{id}")
     Call<OrderDetail> deleteOrderDetail(@Path("id") Object id);
+    //thuong khi khong ai delete, update order bao h
 }

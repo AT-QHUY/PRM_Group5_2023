@@ -1,4 +1,4 @@
-package com.example.group5_project.Activity;
+package com.example.group5_project.Activity.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
