@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activity.Admin.AdminOrderListActivity">
 
     <ListView
@@ -22,6 +23,8 @@
         android:textSize="20dp"
         android:enabled="false"
         android:text="Confirm order"
+        android:backgroundTint="#844AF1"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvOrder" />
 
@@ -34,6 +37,7 @@
         android:gravity="center"
         android:textSize="20dp"
         android:text="Status"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lvOrder" />
 </androidx.constraintlayout.widget.ConstraintLayout>
