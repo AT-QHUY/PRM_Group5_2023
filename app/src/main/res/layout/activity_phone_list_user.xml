@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Admin.MainActivity">
+    tools:context=".Activity.User.PhoneListUserActivity">
 
     <ListView
-        android:id="@+id/PhoneListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" tools:layout_editor_absoluteY="183dp"
-        tools:layout_editor_absoluteX="1dp"/>
+        android:id="@+id/lvPhone"
+        android:layout_width="400dp"
+        android:layout_height="733dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
