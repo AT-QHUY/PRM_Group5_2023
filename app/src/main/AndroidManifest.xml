@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,19 +18,26 @@
         android:theme="@style/Theme.Group5_Project"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".Activity.User.SignInActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Activity.User.SignUpActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activity.User.ProfileActivity"
             android:exported="true" />
@@ -37,20 +46,24 @@
             android:exported="true" />
         <activity
             android:name=".Activity.User.PhoneListUserActivity"
+            android:exported="true"></activity>
+        <activity android:name=".Activity.User.MapActivity"
             android:exported="true">
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activity.Admin.AdminOrderDetailListActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.Admin.AdminOrderListActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".Activity.Admin.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity android:name=".Activity.Admin.OpenAddPage" />
         <activity android:name=".Activity.Admin.OpenEditPage" />
     </application>
