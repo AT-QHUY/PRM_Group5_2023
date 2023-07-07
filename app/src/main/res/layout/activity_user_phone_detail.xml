@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activity.User.UserPhoneDetailActivity">
 
     <ImageView
@@ -22,6 +23,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="4dp"
         android:text="phone name"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgPhone" />
 
@@ -32,6 +34,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="phone price"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toEndOf="@+id/tvPhoneName"
         app:layout_constraintTop_toBottomOf="@+id/imgPhone" />
 
@@ -42,6 +45,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="4dp"
         android:text="description"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,11 +55,12 @@
         android:id="@+id/tvQuantity"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="152dp"
-        android:textSize="32dp"
         android:gravity="center"
         android:text="0"
+        android:textSize="32dp"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toEndOf="@+id/imgMinus"
         app:layout_constraintTop_toBottomOf="@+id/tvPhoneName" />
 
@@ -84,6 +89,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="Add to cart"
+        android:backgroundTint="#844AF1"
+        android:textColor="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
