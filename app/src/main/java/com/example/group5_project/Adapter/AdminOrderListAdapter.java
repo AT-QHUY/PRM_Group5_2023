@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.group5_project.Entity.Order;
 import com.example.group5_project.R;
-import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -61,7 +60,7 @@ public class AdminOrderListAdapter extends BaseAdapter {
         tvDate.setText(dateFormat.format(order.getCreate_at()));
         tvStatus.setText(order.getStatus());
         imgProfile.setImageResource(R.drawable.ic_baseline_person_outline_24);
-        tvPrice.setText(Long.toString(order.getTotal_price()));
+        tvPrice.setText(Long.toString(order.getTotalPrice()));
 
         return convertView;
     }

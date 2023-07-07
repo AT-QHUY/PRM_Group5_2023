@@ -13,6 +13,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface OrderService {
     String ORDERS = "order";
@@ -23,11 +24,13 @@ public interface OrderService {
     Call<Order> getOrder(@Path("id") Object id);
 
     @POST(ORDERS)
-    Call<Void> createOrder(@Body CreateOrderDTO dto, @Header("Authorization") String tokenHeader);
+    Call<Order> createOrder(@Body CreateOrderDTO dto, @Header("Authorization") String tokenHeader);
 
     @PUT(ORDERS)
     Call<Order> updateOrder(@Path("id") Object id, @Body Order order);
 
+    @PUT(ORDERS + "/status/{orderId}")
+    Call<Void> updateOrderStatus(@Path("orderId") Object orderId, @Query("orderStatus") int orderStatus,  @Header("Authorization") String tokenHeader);
     @DELETE(ORDERS + "/{id}")
     Call<Order> deleteOrder(@Path("id") Object id);
 

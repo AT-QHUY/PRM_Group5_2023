@@ -1,10 +1,11 @@
 package com.example.group5_project.service;
 
 import static com.example.group5_project.configuration.PaymentConfig.getParams;
-import static com.example.group5_project.configuration.PaymentConfig.getRandomNumber;
 
 import android.net.Uri;
+import android.util.Log;
 
+import com.example.group5_project.Entity.Order;
 import com.example.group5_project.configuration.PaymentConfig;
 import com.example.group5_project.shared.VNPayStatus;
 
@@ -22,18 +23,16 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class VNPayService {
-    //TODO: will be a full implementation when OrderService is implemented
-    public static String createVNPayURL() throws UnsupportedEncodingException {
+    public static String createVNPayURL(Order order) throws UnsupportedEncodingException {
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String vnp_OrderInfo = "Testing don hang";
         String orderType = "100000";
-        //TODO: change this to ID of the order
-        String vnp_TxnRef = getRandomNumber(8);
+        String vnp_TxnRef = String.valueOf(order.getId());
         String vnp_IpAddr = "111.225.187.171";
         String vnp_TmnCode = PaymentConfig.vnp_TmnCode;
 
-        int amount = 10000 * 100;
+        long amount = order.getTotalPrice() * 100;
         Map vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
         vnp_Params.put("vnp_Command", vnp_Command);
@@ -87,14 +86,30 @@ public class VNPayService {
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
         return PaymentConfig.vnp_PayUrl + "?" + queryUrl;
     }
-
-    public static String VNPayActionReturn(Uri uri) {
+    public static VNPayStatus extractVNPayStatus(Uri uri) throws Exception {
         Map<String, String> keysValues = getParams(uri);
         String code = "V" + keysValues.get("vnp_ResponseCode");
+        if(VNPayStatus.isVNPayStatus(code))
+            return VNPayStatus.valueOf(code);
+        throw new Exception("Invalid VNPay status is invalid");
+    }
+    public static String VNPayActionReturn(Uri uri) {
         String message = "Transaction failed";
-        if(code != null) {
-            message = VNPayStatus.valueOf(code).getMessage();
+        try {
+            VNPayStatus status = extractVNPayStatus(uri);
+            message = status.getMessage();
+            return message;
+        } catch (Exception e) {
+            Log.e("Error", "VNPayActionReturn: " + e.getMessage());
+            return message;
         }
-        return  message;
+    }
+
+    public static long extractVNPTxnRef(Uri uri) {
+        Map<String, String> keysValues = getParams(uri);
+        String orderId = "0";
+        if(keysValues.get("vnp_TxnRef") != null)
+            orderId = keysValues.get("vnp_TxnRef");
+        return Long.parseLong(orderId);
     }
 }

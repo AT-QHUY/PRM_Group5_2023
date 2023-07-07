@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,14 +24,17 @@ import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Activity.Admin.AdminOrderListActivity;
 import com.example.group5_project.Adapter.CartAdapter;
 import com.example.group5_project.Entity.CartDetail;
+import com.example.group5_project.Entity.Order;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
 import com.example.group5_project.Utils.CartUtils;
 import com.example.group5_project.Utils.JWTUtils;
+import com.example.group5_project.service.VNPayService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,7 +136,7 @@ public class CartActivity extends AppCompatActivity {
 
             Button btnSave = (Button) dialog.findViewById(R.id.btnCreate);
             Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
-
+            Button btnVNPay = dialog.findViewById(R.id.btnVNPay);
 
 
             btnSave.setOnClickListener(new View.OnClickListener() {
@@ -157,7 +161,7 @@ public class CartActivity extends AppCompatActivity {
                             Toast.makeText(CartActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
                         }else{
                             OrderService.CreateOrderDTO dto = new OrderService.CreateOrderDTO(adress, name, create_order_detail_dto_hash_map);
-                            Call<Void> call = order_service.createOrder(dto, JWTUtils.getHeaderAuthorization(CartActivity.this));
+                            Call<Order> call = order_service.createOrder(dto, JWTUtils.getHeaderAuthorization(CartActivity.this));
                             call.enqueue(new Callback() {
                                 @Override
                                 public void onResponse(Call call, Response response) {
@@ -191,6 +195,48 @@ public class CartActivity extends AppCompatActivity {
                 }
             });
 
+            btnVNPay.setOnClickListener(v -> {
+                String name = editTextName.getText().toString();
+                String adress = editTextAddress.getText().toString();
+                if(name.equals("") || adress.equals("") ){
+                    Toast.makeText(CartActivity.this, "Please input all fields!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    List<CartDetail> new_cart_detail_list = CartUtils.getCartList(CartActivity.this);
+
+                    HashMap<String, Integer> create_order_detail_dto_hash_map = CartUtils.cartDetailToCreateOrderDetailDTO(new_cart_detail_list);
+
+                    if(create_order_detail_dto_hash_map == null || create_order_detail_dto_hash_map.isEmpty()) {
+                        Toast.makeText(CartActivity.this, "Cart is empty!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        OrderService.CreateOrderDTO dto = new OrderService.CreateOrderDTO(adress, name, create_order_detail_dto_hash_map);
+                        Call<Order> call = order_service.createOrder(dto, JWTUtils.getHeaderAuthorization(CartActivity.this));
+                        call.enqueue(new Callback() {
+                            @Override
+                            public void onResponse(Call call, Response response) {
+                                if(response.isSuccessful() && response.body() != null){
+                                    CartUtils.clearCart(CartActivity.this);
+                                    Intent intent = null;
+                                    try {
+                                        Order order = (Order) response.body();
+                                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(VNPayService.createVNPayURL(order)));
+                                    } catch (UnsupportedEncodingException e) {
+                                        Log.e("Error: ", "onResponse: " + e.getMessage());
+                                    }
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(CartActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call call, Throwable t) {
+                                Toast.makeText(CartActivity.this, "Purchase failed!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                    }
+                    dialog.dismiss();
+                }});
             dialog.show();
         }
 

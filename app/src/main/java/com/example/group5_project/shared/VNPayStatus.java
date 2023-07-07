@@ -8,7 +8,7 @@ public enum VNPayStatus {
     V00 {
         @Override
         public String getMessage() {
-            return "Successful";
+            return "Transaction was successful. Thank you very much!";
         }
     },
     V09 {
