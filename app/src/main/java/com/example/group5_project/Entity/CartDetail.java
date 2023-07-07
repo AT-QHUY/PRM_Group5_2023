@@ -2,7 +2,6 @@ package com.example.group5_project.Entity;
 
 public class CartDetail {
     private long id, phone_id, quantity;
-    private Phone phone;
 
     public CartDetail(long id, long phone_id, long quantity) {
         this.id = id;
@@ -10,20 +9,12 @@ public class CartDetail {
         this.quantity = quantity;
     }
 
-    public CartDetail(long id, long phone_id, long quantity, Phone phone) {
-        this.id = id;
+
+    public CartDetail(long phone_id, long quantity) {
         this.phone_id = phone_id;
         this.quantity = quantity;
-        this.phone = phone;
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
-    }
 
     public long getId() {
         return id;

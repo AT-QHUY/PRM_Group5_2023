@@ -6,6 +6,10 @@ public class Phone {
     private String description, name;
     private String image;
 
+    public Phone(long price) {
+        this.price = price;
+    }
+
     public Phone(long id, long price, long categoryId, String description, String name, String image) {
         this.id = id;
         this.price = price;

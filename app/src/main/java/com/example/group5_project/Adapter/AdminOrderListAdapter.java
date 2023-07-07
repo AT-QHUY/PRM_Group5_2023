@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.group5_project.Entity.Order;
 import com.example.group5_project.R;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,11 +54,13 @@ public class AdminOrderListAdapter extends BaseAdapter {
         TextView tvDate = (TextView) convertView.findViewById(R.id.tvDate);
         TextView tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.tvTotalPrice);
+        ImageView imgProfile = (ImageView) convertView.findViewById(R.id.imgProfile);
 
         Order order = order_list.get(position);
         tvName.setText(order.getCreate_by().getName());
         tvDate.setText(dateFormat.format(order.getCreate_at()));
         tvStatus.setText(order.getStatus());
+        imgProfile.setImageResource(R.drawable.ic_baseline_person_outline_24);
         tvPrice.setText(Long.toString(order.getTotal_price()));
 
         return convertView;
