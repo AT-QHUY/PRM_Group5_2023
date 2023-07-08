@@ -9,15 +9,15 @@ public class Order {
     private Date create_at;
 
     private User create_by;
-    private long total_price;
+    private long totalPrice;
     private String status;
 
-    public Order(long id, ArrayList<Long> list_order_detail_id, Date create_at, User create_by, long total_price, String status) {
+    public Order(long id, ArrayList<Long> list_order_detail_id, Date create_at, User create_by, long totalPrice, String status) {
         this.id = id;
         this.list_order_detail_id = list_order_detail_id;
         this.create_at = create_at;
         this.create_by = create_by;
-        this.total_price = total_price;
+        this.totalPrice = totalPrice;
         this.status = status;
     }
 
@@ -29,12 +29,12 @@ public class Order {
         this.create_by = create_by;
     }
 
-    public long getTotal_price() {
-        return total_price;
+    public long getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal_price(long total_price) {
-        this.total_price = total_price;
+    public void setTotalPrice(long totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public long getId() {

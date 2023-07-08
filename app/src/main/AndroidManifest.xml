@@ -26,6 +26,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activity.User.VNPayNotificationActivity"
+            android:exported="true" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="payment"
+                    android:scheme="myapp" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Activity.User.CartActivity"
             android:exported="true">
 
