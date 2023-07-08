@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".Activity.Admin.AdminOrderDetailListActivity">
+    tools:context=".Activity.User.UserOrderDetailActivity">
 
     <ListView
         android:id="@+id/lvOrderDetail"
         android:layout_width="match_parent"
         android:layout_height="480dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="164dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,25 +36,12 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#844AF1"
-        android:text="Confirm"
-        android:textColor="#fff"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvStatus"
-        app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/tvStatus"
-        android:layout_width="200dp"
+        android:layout_width="320dp"
         android:layout_height="60dp"
+        android:layout_marginStart="12dp"
         android:layout_marginBottom="4dp"
-        android:gravity="center"
         android:text="Status"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -101,4 +87,5 @@
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

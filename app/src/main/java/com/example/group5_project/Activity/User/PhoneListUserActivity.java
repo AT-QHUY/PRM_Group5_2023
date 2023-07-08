@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Activity.Admin.OpenAddPage;
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.Adapter.UserPhoneListAdapter;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
@@ -29,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PhoneListUserActivity extends AppCompatActivity {
+public class PhoneListUserActivity extends SharedActivity {
     ListView lvPhone;
     List<Phone> phone_list;
     UserPhoneListAdapter phone_adapter;
@@ -37,7 +38,7 @@ public class PhoneListUserActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.user_phone_list_menu, menu);
+        super.onCreateOptionsMenu(menu);
         return true;
     }
 
@@ -86,10 +87,6 @@ public class PhoneListUserActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.itemCart) {
-            Intent intent = new Intent(this, CartActivity.class);
-            startActivity(intent);
-        }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 }

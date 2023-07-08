@@ -1,5 +1,6 @@
 package com.example.group5_project.Activity.User;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,8 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +25,7 @@ import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.OrderRepository;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Activity.Admin.AdminOrderListActivity;
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.Adapter.CartAdapter;
 import com.example.group5_project.Entity.CartDetail;
 import com.example.group5_project.Entity.Order;
@@ -44,7 +48,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity extends SharedActivity {
     Button back, checkout;
     TextView totalPrice;
     PhoneService phone_service;
@@ -54,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
     CartAdapter adapter;
     ListView lvCart;
     long total_price ;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -95,7 +100,12 @@ public class CartActivity extends AppCompatActivity {
         String cart_json = mPrefs.getString("cart", "defvalue");
         Gson gson = new Gson();
         Type type = new TypeToken< List < CartDetail >>() {}.getType();
-        cart_detail_list = gson.fromJson(cart_json, type);
+        if(cart_json.equals("defvalue")){
+            cart_detail_list = new ArrayList<>();
+        }
+        else{
+            cart_detail_list = gson.fromJson(cart_json, type);
+        }
         adapter = new CartAdapter(this, R.layout.item_cart, cart_detail_list);
         lvCart.setAdapter(adapter);
         total_price = 0;
@@ -240,5 +250,16 @@ public class CartActivity extends AppCompatActivity {
             dialog.show();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

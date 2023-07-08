@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -22,6 +24,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -47,7 +50,7 @@ import com.google.maps.model.DirectionsRoute;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener {
+public class MapActivity extends SharedActivity implements OnMapReadyCallback, View.OnClickListener {
     private static final LatLng BRANCH = new LatLng(10.841203842437997, 106.80988558901014);
     private static final float MAP_ZOOM_DEFAULT_SCALE = 15;
     private static final int LOCATION_REQUEST_PERMISSION_CODE = 10;
@@ -219,5 +222,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             polyline.setColor(R.color.black);
             polyline.setClickable(true);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

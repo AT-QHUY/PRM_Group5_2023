@@ -2,15 +2,20 @@ package com.example.group5_project.Activity.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
+import com.example.group5_project.Activity.Common.AdminSharedActivity;
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
 import com.example.group5_project.Utils.JWTUtils;
@@ -19,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OpenAddPage extends AppCompatActivity implements View.OnClickListener{
+public class OpenAddPage extends AdminSharedActivity implements View.OnClickListener{
     PhoneService phoneService;
     EditText etName, etDescription, etPrice, etCategory, etImage;
     Button btnSave, btnCancel;
@@ -79,5 +84,16 @@ public class OpenAddPage extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(OpenAddPage.this, MainActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
+import com.example.group5_project.Activity.Common.AdminSharedActivity;
 import com.example.group5_project.Adapter.PhoneAdapter;
 import com.example.group5_project.Entity.Phone;
 
@@ -28,15 +29,12 @@ import retrofit2.Response;
 import com.example.group5_project.R;
 import com.example.group5_project.Utils.JWTUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AdminSharedActivity {
     PhoneService phoneService;
     ListView PhoneListView;
     PhoneAdapter phoneAdapter;
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,15 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-        @Override
-        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-            if (item.getItemId() == R.id.menuAdd) {
-                Intent intent = new Intent(this, OpenAddPage.class);
-                startActivity(intent);
-                return true;
-            }
-            return true;
-        }
+
 
     public void DialogDelete(String name, long id){
         AlertDialog.Builder dialogDelete = new AlertDialog.Builder(this);
@@ -105,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         dialogDelete.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
