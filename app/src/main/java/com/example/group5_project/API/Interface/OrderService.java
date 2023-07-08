@@ -18,10 +18,10 @@ import retrofit2.http.Query;
 public interface OrderService {
     String ORDERS = "order";
     @GET(ORDERS)
-    Call<Order[]> getAllOrders();
+    Call<GetOrderDTO[]> getAllOrders(@Header("Authorization") String tokenHeader);
 
     @GET(ORDERS + "/{id}")
-    Call<Order> getOrder(@Path("id") Object id);
+    Call<GetOrderDTO> getOrder(@Path("id") Object id,@Header("Authorization") String tokenHeader);
 
     @POST(ORDERS)
     Call<Order> createOrder(@Body CreateOrderDTO dto, @Header("Authorization") String tokenHeader);
@@ -82,5 +82,150 @@ public interface OrderService {
             this.orderDetails = orderDetails;
         }
     }
+
+    public class GetOrderDTO{
+        private long totalPrice;
+        private int id, status, userId;
+        private String address, customerName, createDate;
+        private List<GetOrderDetailDTO> orderDetails;
+        public GetOrderDTO(long totalPrice, int id, int status, int userId, String address, String customerName, String createDate) {
+            this.totalPrice = totalPrice;
+            this.id = id;
+            this.status = status;
+            this.userId = userId;
+            this.address = address;
+            this.customerName = customerName;
+            this.createDate = createDate;
+        }
+
+        public GetOrderDTO(long totalPrice, int id, int status, int userId, String address, String customerName, String createDate, List<GetOrderDetailDTO> dto_list) {
+            this.totalPrice = totalPrice;
+            this.id = id;
+            this.status = status;
+            this.userId = userId;
+            this.address = address;
+            this.customerName = customerName;
+            this.createDate = createDate;
+            this.orderDetails = dto_list;
+        }
+
+        public List<GetOrderDetailDTO> getDto_list() {
+            return orderDetails;
+        }
+
+        public void setDto_list(List<GetOrderDetailDTO> dto_list) {
+            this.orderDetails = dto_list;
+        }
+
+        public long getTotalPrice() {
+            return totalPrice;
+        }
+
+        public void setTotalPrice(long totalPrice) {
+            this.totalPrice = totalPrice;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getCustomerName() {
+            return customerName;
+        }
+
+        public void setCustomerName(String customerName) {
+            this.customerName = customerName;
+        }
+
+        public String getCreateDate() {
+            return createDate;
+        }
+
+        public void setCreateDate(String createDate) {
+            this.createDate = createDate;
+        }
+    }
+
+    public class GetOrderDetailDTO{
+        private int orderId, phoneId, quantity, price, id;
+
+        public GetOrderDetailDTO(int orderId, int phoneId, int quantity, int price, int id) {
+            this.orderId = orderId;
+            this.phoneId = phoneId;
+            this.quantity = quantity;
+            this.price = price;
+            this.id = id;
+        }
+
+        public int getOrderId() {
+            return orderId;
+        }
+
+        public void setOrderId(int orderId) {
+            this.orderId = orderId;
+        }
+
+        public int getPhoneId() {
+            return phoneId;
+        }
+
+        public void setPhoneId(int phoneId) {
+            this.phoneId = phoneId;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public void setPrice(int price) {
+            this.price = price;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+    }
+
+
 
 }
