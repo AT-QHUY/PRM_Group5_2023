@@ -19,11 +19,7 @@
         <activity
             android:name=".Activity.User.SignInActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.User.VNPayNotificationActivity"
@@ -68,7 +64,11 @@
         <activity
             android:name=".Activity.Admin.MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Activity.Admin.OpenAddPage" />
         <activity android:name=".Activity.Admin.OpenEditPage" />

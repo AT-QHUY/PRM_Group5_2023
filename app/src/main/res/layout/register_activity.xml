@@ -138,7 +138,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="SIGNUP"
-        android:backgroundTint="#611DE0"
+        android:backgroundTint="#844AF1"
         app:cornerRadius="3dp"
         android:textColor="@color/white" />
 
@@ -147,7 +147,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvLogin"
         android:layout_below="@id/registerBtn"
+        android:layout_marginTop="20dp"
         android:text="Sign In"
+        android:textStyle="bold"
         android:layout_centerHorizontal="true"/>
 
     <TextView
