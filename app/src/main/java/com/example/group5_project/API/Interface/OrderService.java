@@ -13,6 +13,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface OrderService {
     String ORDERS = "order";
@@ -23,14 +24,13 @@ public interface OrderService {
     Call<GetOrderDTO> getOrder(@Path("id") Object id,@Header("Authorization") String tokenHeader);
 
     @POST(ORDERS)
-    Call<Void> createOrder(@Body CreateOrderDTO dto, @Header("Authorization") String tokenHeader);
+    Call<Order> createOrder(@Body CreateOrderDTO dto, @Header("Authorization") String tokenHeader);
 
     @PUT(ORDERS)
     Call<Order> updateOrder(@Path("id") Object id, @Body Order order);
 
-    @PUT(ORDERS + "/{id}")
-    Call<Void> updateOrderStatus(@Path("id") Object id, @Body UpdateOrderStatusDTO dto, @Header("Authorization") String tokenHeader);
-
+    @PUT(ORDERS + "/status/{orderId}")
+    Call<Void> updateOrderStatus(@Path("orderId") Object orderId, @Query("orderStatus") int orderStatus,  @Header("Authorization") String tokenHeader);
     @DELETE(ORDERS + "/{id}")
     Call<Order> deleteOrder(@Path("id") Object id);
 
@@ -226,21 +226,6 @@ public interface OrderService {
         }
     }
 
-    public class UpdateOrderStatusDTO{
-        private int status;
-
-        public UpdateOrderStatusDTO(int status) {
-            this.status = status;
-        }
-
-        public int getStatus() {
-            return status;
-        }
-
-        public void setStatus(int status) {
-            this.status = status;
-        }
-    }
 
 
 }

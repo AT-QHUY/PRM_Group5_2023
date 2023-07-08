@@ -44,4 +44,10 @@ public class JWTUtils {
         Log.d("JWT_DECODED", "ROLE: " + retMap.get("http://schemas.microsoft.com/ws/2008/06/identity/claims/role").toString());
         return retMap.get("http://schemas.microsoft.com/ws/2008/06/identity/claims/role").toString();
     }
+
+    public static void clearToken(Context context){
+        SharedPreferences mPrefs = context.getSharedPreferences("session", Context.MODE_PRIVATE);
+        mPrefs.edit().remove("access_token").commit();
+
+    }
 }
