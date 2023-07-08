@@ -1,6 +1,7 @@
 package com.example.group5_project.Activity.User;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.group5_project.API.Interface.UserService;
 import com.example.group5_project.API.Repository.UserRepository;
+import com.example.group5_project.Activity.Admin.AdminOrderListActivity;
 import com.example.group5_project.Entity.User;
 import com.example.group5_project.R;
 import com.example.group5_project.Utils.JWTUtils;
@@ -61,9 +63,28 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                 public void onResponse(Call<UserService.TokenDTO> call, Response<UserService.TokenDTO> response) {
                     UserService.TokenDTO res = response.body();
                     if(res != null){
-                        Intent it = new Intent(SignInActivity.this, PhoneListUserActivity.class);
+                        Intent it;
                         try {
-                            JWTUtils.decoded(res.getToken());
+                            SharedPreferences mPrefs = getSharedPreferences("session",MODE_PRIVATE);
+                            SharedPreferences.Editor editor = mPrefs.edit();
+                            String bodyString = JWTUtils.getDecodedBody(res.getToken());
+                            if(bodyString == null) {
+                                Toast.makeText(SignInActivity.this, "Sthing wrong with login token body", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            String role = JWTUtils.getRoleFromJsonToken(
+                                    bodyString);
+                            if(role == null){
+                                Toast.makeText(SignInActivity.this, "Sthing wrong with role in token", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            if(role.equals("USER")){
+                                it = new Intent(SignInActivity.this, PhoneListUserActivity.class);
+                            }else{
+                                it = new Intent(SignInActivity.this, AdminOrderListActivity.class);
+                            }
+                            editor.putString("access_token",res.getToken());
+                            editor.commit();
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
