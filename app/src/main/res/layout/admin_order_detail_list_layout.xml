@@ -6,9 +6,9 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:id="@+id/imgPhone"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,17 +17,17 @@
 
     <TextView
         android:id="@+id/tvUsername"
-        android:layout_width="156dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="username"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgPhone"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvQuantity"
-        android:layout_width="141dp"
+        android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
@@ -37,13 +37,13 @@
 
     <TextView
         android:id="@+id/tvPrice"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="46dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="totalPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imgPhone"
         app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 </androidx.constraintlayout.widget.ConstraintLayout>

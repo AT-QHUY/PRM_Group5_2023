@@ -8,22 +8,31 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group5_project.API.Interface.OrderService;
+import com.example.group5_project.API.Interface.UserService;
+import com.example.group5_project.API.Repository.UserRepository;
 import com.example.group5_project.Entity.Order;
 import com.example.group5_project.R;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AdminOrderListAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<Order> order_list;
+    private List<OrderService.GetOrderDTO> order_list;
 
 
-    public AdminOrderListAdapter(Context context, int layout, List<Order> order_list) {
+    public AdminOrderListAdapter(Context context, int layout, List<OrderService.GetOrderDTO> order_list) {
         this.context = context;
         this.layout = layout;
         this.order_list = order_list;
@@ -46,7 +55,6 @@ public class AdminOrderListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
         LayoutInflater inf =(LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         convertView = inf.inflate(layout, null);
 
@@ -56,12 +64,21 @@ public class AdminOrderListAdapter extends BaseAdapter {
         TextView tvPrice = (TextView) convertView.findViewById(R.id.tvTotalPrice);
         ImageView imgProfile = (ImageView) convertView.findViewById(R.id.imgProfile);
 
-        Order order = order_list.get(position);
-        tvName.setText(order.getCreate_by().getName());
-        tvDate.setText(dateFormat.format(order.getCreate_at()));
-        tvStatus.setText(order.getStatus());
+        String formatted_date;
+        OrderService.GetOrderDTO order = order_list.get(position);
+        try {
+            Date date = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").parse(order.getCreateDate());
+            formatted_date = new SimpleDateFormat("dd-MM-yyyy").format(date);
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        tvName.setText(order.getCustomerName());
+        tvDate.setText(formatted_date);
+        tvStatus.setText(order.getStatus() == 0 ? "PENDING" : "CONFIRMED");
         imgProfile.setImageResource(R.drawable.ic_baseline_person_outline_24);
-        tvPrice.setText(Long.toString(order.getTotal_price()));
+        tvPrice.setText(Long.toString(order.getTotalPrice()));
 
         return convertView;
     }

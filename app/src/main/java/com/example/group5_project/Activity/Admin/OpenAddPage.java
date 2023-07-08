@@ -13,6 +13,7 @@ import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
+import com.example.group5_project.Utils.JWTUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,7 +49,7 @@ public class OpenAddPage extends AppCompatActivity implements View.OnClickListen
 
         Phone phone = new Phone(name, description, image, Long.parseLong(price), Long.parseLong(categoryId));
         try{
-            Call<Phone> call = phoneService.createPhone(phone);
+            Call<Phone> call = phoneService.createPhone(phone, JWTUtils.getHeaderAuthorization(OpenAddPage.this));
             call.enqueue(new Callback<Phone>() {
                 @Override
                 public void onResponse(Call<Phone> call, Response<Phone> response) {

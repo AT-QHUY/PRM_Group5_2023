@@ -13,6 +13,7 @@ import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
+import com.example.group5_project.Utils.JWTUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,7 +97,7 @@ public class OpenEditPage extends AppCompatActivity implements View.OnClickListe
             Phone updatedPhone = new Phone(id, newPrice,  newCategoryId,newDescription, newName  , newImage);
 
             // Call the API service to update the phone data
-            phoneService.updatePhone(phoneId, updatedPhone).enqueue(new Callback<Phone>() {
+            phoneService.updatePhone(phoneId, updatedPhone, JWTUtils.getHeaderAuthorization(OpenEditPage.this)).enqueue(new Callback<Phone>() {
                 @Override
                 public void onResponse(Call<Phone> call, Response<Phone> response) {
                     if (response.isSuccessful()) {
