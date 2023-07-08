@@ -5,6 +5,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -26,10 +27,10 @@ public interface PhoneService {
     Call<Phone[]> getAllPhones(@Query("page") int page, @Query("perPage") int perPage);
 
     @POST(PHONES)
-    Call<Phone> createPhone(@Body Phone phone);
+    Call<Phone> createPhone(@Body Phone phone, @Header("Authorization") String tokenHeader);
 
     @PUT(PHONES + "/{id}")
-    Call<Phone> updatePhone(@Path("id") long id, @Body Phone phone);
+    Call<Phone> updatePhone(@Path("id") long id, @Body Phone phone, @Header("Authorization") String tokenHeader);
     @DELETE(PHONES + "/{id}")
-    Call<Phone> deletePhone(@Path("id") Object id);
+    Call<Phone> deletePhone(@Path("id") Object id, @Header("Authorization") String tokenHeader);
 }

@@ -26,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import com.example.group5_project.R;
+import com.example.group5_project.Utils.JWTUtils;
 
 public class MainActivity extends AppCompatActivity {
     PhoneService phoneService;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         dialogDelete.setPositiveButton("Có", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                phoneService.deletePhone(id).enqueue(new Callback<Phone>() {
+                phoneService.deletePhone(id, JWTUtils.getHeaderAuthorization(MainActivity.this)).enqueue(new Callback<Phone>() {
                     @Override
                     public void onResponse(Call<Phone> call, Response<Phone> response) {
                         if(response.body() != null) {
