@@ -76,7 +76,7 @@ public class AdminOrderListAdapter extends BaseAdapter {
         tvName.setText(order.getCustomerName());
         tvDate.setText(formatted_date);
         tvStatus.setText(order.getStatus() == 0 ? "PENDING" : "CONFIRMED");
-        imgProfile.setImageResource(R.drawable.ic_baseline_person_outline_24);
+        imgProfile.setImageResource(R.drawable.baseline_person_24_black);
         tvPrice.setText(Long.toString(order.getTotalPrice()));
 
         return convertView;

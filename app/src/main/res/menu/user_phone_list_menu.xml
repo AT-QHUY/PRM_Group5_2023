@@ -17,7 +17,7 @@
 
     <item
         android:title="Item"
-        android:icon="@drawable/icon_order"
+        android:icon="@drawable/order_list_icon"
         app:showAsAction="always"
         android:id="@+id/itemOrder"/>
 
