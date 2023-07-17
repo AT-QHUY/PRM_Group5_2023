@@ -2,5 +2,6 @@
     <string name="app_name">Group5_Project</string>
     <string name="your_resource_id">Your text content here</string>
     <string name="btn_current_location">Current location</string>
-    <string name="google_maps_api_key">AIzaSyAqaHEp1COlnSMCKPc2SW5OM6lkocN5u9Q</string>
+<!--    <string name="google_maps_api_key">AIzaSyAqaHEp1COlnSMCKPc2SW5OM6lkocN5u9Q</string>-->
+    <string name="google_maps_api_key">AIzaSyAPcZYSDdr8nyD6THBk0kiVqkJguoUoDMA</string>
 </resources>
