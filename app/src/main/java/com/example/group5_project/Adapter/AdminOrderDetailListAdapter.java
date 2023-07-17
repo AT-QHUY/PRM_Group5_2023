@@ -75,7 +75,7 @@ public class AdminOrderDetailListAdapter extends BaseAdapter {
             public void onResponse(Call<Phone> call, Response<Phone> response) {
                 tvName.setText(response.body().getName());
                 tvQuantity.setText(Integer.toString(order_detail.getQuantity()));
-                tvPrice.setText(Integer.toString( order_detail.getPrice()));
+                tvPrice.setText(Long.toString( response.body().getPrice()));
                 Picasso.get().load(response.body().getImage()).into(imgPhone);
 
             }

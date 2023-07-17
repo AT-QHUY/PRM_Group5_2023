@@ -57,7 +57,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="#33FFFFFF"
+        android:backgroundTint="#844AF1"
         app:strokeColor="#80CCCACA"
         android:text="LOGIN"
         android:textColor="@color/white"/>

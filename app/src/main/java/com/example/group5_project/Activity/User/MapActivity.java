@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -43,7 +46,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnPolylineClickListener {
+public class MapActivity extends SharedActivity implements OnMapReadyCallback, View.OnClickListener, GoogleMap.OnPolylineClickListener {
     private static final LatLng BRANCH = new LatLng(10.8412038, 106.8098855);
     private static final float MAP_ZOOM_DEFAULT_SCALE = 15;
     private static final int LOCATION_REQUEST_PERMISSION_CODE = 10;
@@ -211,5 +214,15 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         polyline.setColor(ContextCompat.getColor(getApplicationContext(), R.color.blue));
         polyline.setZIndex(1);
         choosenPolyline = polyline;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

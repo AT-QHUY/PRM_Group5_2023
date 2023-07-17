@@ -9,33 +9,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.group5_project.API.Interface.OrderService;
-import com.example.group5_project.API.Interface.UserService;
-import com.example.group5_project.API.Repository.UserRepository;
-import com.example.group5_project.Entity.Order;
 import com.example.group5_project.R;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class AdminOrderListAdapter extends BaseAdapter {
+public class UserOrderListAdapter extends BaseAdapter {
 
     private Context context;
     private int layout;
     private List<OrderService.GetOrderDTO> order_list;
 
 
-    public AdminOrderListAdapter(Context context, int layout, List<OrderService.GetOrderDTO> order_list) {
+    public UserOrderListAdapter(Context context, int layout, List<OrderService.GetOrderDTO> order_list) {
         this.context = context;
         this.layout = layout;
         this.order_list = order_list;
     }
+
 
     @Override
     public int getCount() {

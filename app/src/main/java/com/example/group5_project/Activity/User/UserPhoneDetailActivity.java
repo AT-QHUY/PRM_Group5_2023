@@ -1,5 +1,6 @@
 package com.example.group5_project.Activity.User;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
+import com.example.group5_project.Activity.Common.SharedActivity;
 import com.example.group5_project.Adapter.UserPhoneListAdapter;
 import com.example.group5_project.Entity.CartDetail;
 import com.example.group5_project.Entity.Phone;
@@ -34,7 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserPhoneDetailActivity extends AppCompatActivity {
+public class UserPhoneDetailActivity extends SharedActivity {
 
     ImageView imgPhone, imgAdd, imgMinus;
     TextView tvName, tvPrice, tvDescription, tvQuantity;
@@ -129,6 +133,17 @@ public class UserPhoneDetailActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
 }

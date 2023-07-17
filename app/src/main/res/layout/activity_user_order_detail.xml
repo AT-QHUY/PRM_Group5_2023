@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".Activity.Admin.AdminOrderDetailListActivity">
+    tools:context=".Activity.User.UserOrderDetailActivity">
 
     <ListView
         android:id="@+id/lvOrderDetail"
@@ -24,7 +23,6 @@
         android:layout_marginTop="36dp"
         android:text="name"
         android:textSize="20dp"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,29 +33,15 @@
         android:layout_marginTop="12dp"
         android:text="date"
         android:textSize="20dp"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
-    <Button
-        android:id="@+id/btnConfirm"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#844AF1"
-        android:text="Confirm"
-        android:textColor="#fff"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvStatus"
-        app:layout_constraintVertical_bias="1.0" />
-
     <TextView
         android:id="@+id/tvStatus"
-        android:layout_width="200dp"
+        android:layout_width="320dp"
         android:layout_height="60dp"
+        android:layout_marginStart="12dp"
         android:layout_marginBottom="4dp"
-        android:gravity="center"
         android:text="Status"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -71,7 +55,6 @@
         android:layout_marginTop="12dp"
         android:text="Price"
         android:textSize="20dp"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
@@ -82,7 +65,6 @@
         android:layout_marginTop="36dp"
         android:text="Receiver: "
         android:textSize="20dp"
-        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +76,6 @@
         android:layout_marginTop="12dp"
         android:text="Order date: "
         android:textSize="20dp"
-        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -106,23 +87,22 @@
         android:layout_marginTop="12dp"
         android:text="Total price: "
         android:textSize="20dp"
-        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
     <TextView
         android:id="@+id/textView6"
         android:layout_width="67dp"
         android:layout_height="26dp"
         android:layout_marginTop="5dp"
-        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:drawableLeft="@drawable/baseline_arrow_24_color"
         android:text="Back"
-        android:textColor="@color/white"
+        android:textColor="#611DE0"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
