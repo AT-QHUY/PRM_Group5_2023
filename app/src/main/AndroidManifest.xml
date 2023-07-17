@@ -31,15 +31,34 @@
         <activity
             android:name=".Activity.User.SignInActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.User.VNPayNotificationActivity"
+            android:exported="true" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="payment"
+                    android:scheme="myapp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.User.CartActivity"
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".Activity.User.SignUpActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".Activity.User.ProfileActivity"
             android:exported="true" />
@@ -51,11 +70,11 @@
             android:exported="true"></activity>
         <activity android:name=".Activity.User.MapActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Activity.Admin.AdminOrderDetailListActivity"
@@ -65,7 +84,9 @@
             android:exported="true"></activity>
         <activity
             android:name=".Activity.Admin.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity android:name=".Activity.Admin.OpenAddPage" />
         <activity android:name=".Activity.Admin.OpenEditPage" />
     </application>

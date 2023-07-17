@@ -12,8 +12,8 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Sửa điện thoại"
-        android:textColor="#F44336"
+        android:text="Update Phone Infomation"
+        android:textColor="#391085"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,7 +25,7 @@
         android:id="@+id/nameLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_header">
@@ -34,23 +34,34 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
-            android:text="Name" />
+            android:text="Name"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="20dp"
+            android:textAlignment="textStart"
+            android:paddingLeft="7dp"/>
 
         <EditText
             android:id="@+id/textName"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginEnd="10dp"
             android:layout_weight="7"
             android:hint="Enter Name"
-            android:inputType="text" />
+            android:background="@drawable/border_edit_text"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#4D000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/descriptionLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +71,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
-            android:text="Description" />
+            android:text="Description"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:textAlignment="textStart"
+            android:paddingLeft="7dp"/>
 
         <EditText
             android:id="@+id/textDescription"
@@ -69,14 +84,20 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Description"
-            android:inputType="text" />
+            android:background="@drawable/border_edit_text"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#4D000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/priceLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,8 +107,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
-            android:text="Price" />
+            android:text="Price"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:textAlignment="textStart"
+            android:paddingLeft="7dp"/>
 
         <EditText
             android:id="@+id/textPrice"
@@ -95,14 +120,20 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Price"
-            android:inputType="number" />
+            android:background="@drawable/border_edit_text"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#4D000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/categoryLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +143,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
-            android:text="Category" />
+            android:text="Category"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:textAlignment="textStart"
+            android:paddingLeft="7dp"/>
 
         <EditText
             android:id="@+id/textCategory"
@@ -121,14 +156,20 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Category"
-            android:inputType="number" />
+            android:background="@drawable/border_edit_text"
+            android:inputType="number"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#4D000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/imageLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -138,8 +179,12 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:gravity="center"
-            android:text="Image" />
+            android:text="Image"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingTop="15dp"
+            android:textAlignment="textStart"
+            android:paddingLeft="7dp"/>
 
         <EditText
             android:id="@+id/textImage"
@@ -147,32 +192,45 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:hint="Enter Image Link"
-            android:inputType="text" />
+            android:background="@drawable/border_edit_text"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:textColor="@color/black"
+            android:textColorHint="#4D000000"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <Button
         android:id="@+id/edit_button"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="48dp"
-        android:background="#6200ED"
-        android:text="Sửa"
+        android:text="Update"
+        android:backgroundTint="#391085"
+        app:strokeColor="#80CCCACA"
+        app:strokeWidth="1dp"
+        app:cornerRadius="3dp"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageLinearLayout" />
 
     <Button
         android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
+        android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="56dp"
-        android:background="#6200ED"
-        android:text="Hủy"
+        android:text="Cancel"
+        android:backgroundTint="#391085"
+        app:strokeColor="#80CCCACA"
+        app:strokeWidth="1dp"
+        app:cornerRadius="3dp"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.361"
-        app:layout_constraintStart_toEndOf="@+id/addButton"
         app:layout_constraintTop_toBottomOf="@+id/imageLinearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

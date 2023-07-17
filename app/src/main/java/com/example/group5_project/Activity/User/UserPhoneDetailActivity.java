@@ -2,7 +2,9 @@ package com.example.group5_project.Activity.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +16,18 @@ import android.widget.Toast;
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
 import com.example.group5_project.Adapter.UserPhoneListAdapter;
+import com.example.group5_project.Entity.CartDetail;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
+import com.example.group5_project.Utils.CartUtils;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Logger;
 
 import retrofit2.Call;
@@ -105,5 +114,21 @@ public class UserPhoneDetailActivity extends AppCompatActivity {
             }
         });
 
+        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                long quantity = Long.parseLong(tvQuantity.getText().toString());
+                if(quantity <=0){
+                    Toast.makeText(UserPhoneDetailActivity.this, "Quantity must be greater than 0!", Toast.LENGTH_SHORT).show();
+                }else{
+                    CartUtils.handleAddToCart(UserPhoneDetailActivity.this, phone_id,quantity);
+                    Toast.makeText(UserPhoneDetailActivity.this, "Successfully!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(UserPhoneDetailActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
+
 }

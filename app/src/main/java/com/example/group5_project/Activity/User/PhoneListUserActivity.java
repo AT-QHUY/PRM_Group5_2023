@@ -1,9 +1,15 @@
 package com.example.group5_project.Activity.User;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -11,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.group5_project.API.Interface.PhoneService;
 import com.example.group5_project.API.Repository.PhoneRepository;
+import com.example.group5_project.Activity.Admin.OpenAddPage;
 import com.example.group5_project.Adapter.UserPhoneListAdapter;
 import com.example.group5_project.Entity.Phone;
 import com.example.group5_project.R;
@@ -28,6 +35,11 @@ public class PhoneListUserActivity extends AppCompatActivity {
     UserPhoneListAdapter phone_adapter;
     PhoneService phone_service;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user_phone_list_menu, menu);
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +49,10 @@ public class PhoneListUserActivity extends AppCompatActivity {
         lvPhone = (ListView) findViewById(R.id.lvPhone);
         phone_service = PhoneRepository.getPhoneService();
         Call<Phone[]> call = phone_service.getAllPhones();
+
+
+        SharedPreferences mPrefs = getSharedPreferences("session", Context.MODE_PRIVATE);
+        String access_token = mPrefs.getString("access_token", "defvalue");
         call.enqueue(new Callback<Phone[]>() {
             @Override
             public void onResponse(Call<Phone[]> call, Response<Phone[]> response) {
@@ -66,5 +82,14 @@ public class PhoneListUserActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.itemCart) {
+            Intent intent = new Intent(this, CartActivity.class);
+            startActivity(intent);
+        }
+        return true;
     }
 }
